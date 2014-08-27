@@ -36,7 +36,8 @@ plot.baltimore.emissions.summary <- function(data.file)
     with(baltimore.summary,
          plot(sum ~ year, type = 'l',
               main = 'Total Emissions in Baltimore, Maryland per Year',
-              xlab = 'Year', ylab = 'Total Emissions', ylim = c(0, max(sum)))
+              xlab = 'Year', ylab = 'Total Emissions (in tons)',
+              ylim = c(0, max(sum)))
     )
     abline(lm(sum ~ year, baltimore.summary), col = 'blue', lty = 2)
 }

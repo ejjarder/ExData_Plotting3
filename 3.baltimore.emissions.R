@@ -43,23 +43,25 @@ get.baltimore.emissions.plot <- function(data.file)
         geom_smooth(method = 'lm', se = FALSE,
                     aes(color = type), linetype = 2) +
         labs(title = 'Emissions Per Type Per Year in Baltimore, Maryland',
-             x = 'Year', y = 'Total Emissions', colour = 'Emission Types')
+             x = 'Year', y = 'Total Emissions (in tons)',
+             colour = 'Emission Types')
 }
 
 # plot.baltimore.emissions.to.png()
 # Plots the total emissions to a png.
 #
 # parameters:
-#   - data.file - the file that contains the emission data
+#   - baltimore.emissions - the plot of the baltimore emissions data
 #   - out.png - the file name of the output png file
 #
-plot.baltimore.emissions.to.png <- function(data.file, out.png)
+plot.baltimore.emissions.to.png <- function(baltimore.emissions, out.png)
 {
-    summary.plot <- get.baltimore.emissions.plot(data.file)
-    ggsave(filename = out.png, plot = summary.plot, dpi = 60,
+    ggsave(filename = out.png, plot = baltimore.emissions, dpi = 60,
            width = 8, height = 8)
 }
 
 # Main Body
-plot.baltimore.emissions.to.png('summarySCC_PM25.rds',
+baltimore.emissions <- get.baltimore.emissions.plot('summarySCC_PM25.rds')
+
+plot.baltimore.emissions.to.png(baltimore.emissions,
                                 '3.baltimore.emissions.png')

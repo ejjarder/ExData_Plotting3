@@ -39,7 +39,7 @@ plot.total.emissions <- function(data.file)
     with(nei.summary,
         plot(sum ~ year, type = 'l',
              main = 'Total Emissions per Year',
-             xlab = 'Year', ylab = 'Total Emissions (in millions)',
+             xlab = 'Year', ylab = 'Total Emissions (in million tons)',
              ylim = c(0, max(sum)))
     )
     abline(lm(sum ~ year, nei.summary), col = 'blue', lty = 2)
